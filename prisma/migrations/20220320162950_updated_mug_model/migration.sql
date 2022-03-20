@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "Mug" ADD COLUMN     "featured" BOOLEAN DEFAULT false,
+ALTER COLUMN "onSale" SET DEFAULT false,
+ALTER COLUMN "price" DROP DEFAULT;

@@ -1,0 +1,24 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Mug {
+  id Int  @id @default(autoincrement())
+  name String
+  imgUrl String
+  price Int
+  onSale Boolean? @default(false)
+  oldPrice Int? 
+  featured Boolean? @default(false)
+
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+}

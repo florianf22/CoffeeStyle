@@ -4,7 +4,15 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'header-hero': "url('/images/headerBg.jpeg')",
+      },
+      colors: {
+        primary: '#a25f4b',
+        black: '#1d1f2e',
+      },
+    },
   },
   plugins: [],
 };
