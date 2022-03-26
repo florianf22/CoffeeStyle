@@ -16,7 +16,9 @@ const HeaderHero: NextPage = () => {
         The most versatile furniture system ever created. Designed to fit your
         life, made to move and grow.
       </h3>
-      <Button className="self-center">EXPLORE OUR PRODUCTS</Button>
+      <Button primary className="self-center">
+        EXPLORE OUR PRODUCTS
+      </Button>
     </div>
   );
 };

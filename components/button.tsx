@@ -1,13 +1,28 @@
 import type { NextPage } from 'next';
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+type ButtonHTMLProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button: NextPage<Props> = ({ children, className, ...props }) => {
+type PrimaryButtonProps = {
+  primary: boolean;
+  secondary?: never;
+};
+
+type SecondaryButtonProps = {
+  primary?: never;
+  secondary: boolean;
+};
+
+const Button: NextPage<
+  ButtonHTMLProps & (PrimaryButtonProps | SecondaryButtonProps)
+> = ({ children, className, primary, secondary, ...props }) => {
+  const variant = secondary
+    ? 'bg-black text-white text-xs tracking-[2px]'
+    : 'bg-white text-black text-sm tracking-wider';
+
   return (
     <button
       {...props}
-      className={`bg-white text-black py-4 px-6 tracking-wider font-bold text-sm
-        transition-opacity hover:opacity-90 ${className}`}
+      className={`py-4 px-6 transition-opacity hover:opacity-90 ${variant} ${className}`}
     >
       {children}
     </button>

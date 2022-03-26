@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "studio": "prisma studio",
-    "seed": "npx prisma db seed",
+    "seed": "prisma db seed",
+    "migrate": "prisma migrate dev",
     "prisma:dev:deploy": "prisma migrate deploy",
     "db:dev:rm": "docker compose rm dev-db -s -f -v",
     "db:dev:up": "docker compose up dev-db -d",
@@ -19,9 +20,12 @@
   },
   "dependencies": {
     "@prisma/client": "^3.11.0",
+    "axios": "^0.26.1",
+    "immer": "^9.0.12",
     "next": "12.1.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "use-immer": "^0.6.0"
   },
   "devDependencies": {
     "@types/node": "17.0.21",

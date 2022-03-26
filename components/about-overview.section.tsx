@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import Link from './Link';
+import LinkCustom from './link';
 
 const AboutOverview: NextPage = () => {
   return (
@@ -16,7 +16,7 @@ const AboutOverview: NextPage = () => {
         far World of Grammar.
       </p>
 
-      <Link>Read the full Story</Link>
+      <LinkCustom>Read the full Story</LinkCustom>
     </section>
   );
 };

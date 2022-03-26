@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         'header-hero': "url('/images/headerBg.jpeg')",
+        parallax: "url('/images/parallax.jpeg')",
       },
       colors: {
         primary: '#a25f4b',

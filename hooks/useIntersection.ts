@@ -18,7 +18,9 @@ const useIntersection = (
 
     element.current && observer.observe(element.current);
 
-    return () => observer.unobserve(element.current);
+    const current = element.current;
+
+    return () => observer.unobserve(current);
   }, [element, rootMargin]);
 
   return isVisible;

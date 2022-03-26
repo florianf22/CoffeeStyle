@@ -1,12 +1,21 @@
 import type { NextPage } from 'next';
 
-interface Props extends React.HTMLProps<HTMLHeadingElement> {}
+interface Props extends React.HTMLProps<HTMLHeadingElement> {
+  biggerText?: boolean;
+}
 
-const SectionLabel: NextPage<Props> = ({ children, className, ...props }) => {
+const SectionLabel: NextPage<Props> = ({
+  children,
+  className,
+  biggerText = false,
+  ...props
+}) => {
+  const textSize = biggerText ? 'text-sm' : 'text-xs';
+
   return (
     <h4
       {...props}
-      className={`opacity-60 font-bold text-[0.75rem] tracking-widest
+      className={`opacity-60 font-bold ${textSize} tracking-widest
         relative inline-block
         before:h-[1px] before:w-8 before:bg-gray-400 before:absolute
         before:top-[50%] before:left-[-3rem] 
