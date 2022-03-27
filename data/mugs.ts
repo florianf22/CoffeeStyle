@@ -2,16 +2,14 @@ export const mugs = [
   {
     id: 1,
     name: 'Pink Premium Ceramic',
-    imgUrl:
-      'https://assets.website-files.com/5be96251aaba7a84f6ecdf81/5be96251aaba7a512bece011_liana-mikah-698524-unsplash.jpg',
+    imgUrl: '/mugs/pink-premium-ceramic.jpeg',
     price: 99,
     featured: true,
   },
   {
     id: 2,
     name: 'Golden Designers Mug',
-    imgUrl:
-      'https://assets.website-files.com/5be96251aaba7a84f6ecdf81/5be96251aaba7a25acecdfd6_jakub-dziubak-394720-unsplash.jpg',
+    imgUrl: '/mugs/golden-designers-mug.jpeg',
     price: 50,
     onSale: true,
     oldPrice: 69,
@@ -20,8 +18,7 @@ export const mugs = [
   {
     id: 3,
     name: 'Red Love Cup',
-    imgUrl:
-      'https://assets.website-files.com/5be96251aaba7a84f6ecdf81/5be96251aaba7a6173ece01a_trent-erwin-570303-unsplash.jpg',
+    imgUrl: '/mugs/red-love-cup.jpeg',
     price: 25,
     onSale: true,
     oldPrice: 39,
@@ -29,8 +26,7 @@ export const mugs = [
   {
     id: 4,
     name: 'Black Tea Cup',
-    imgUrl:
-      'https://assets.website-files.com/5be96251aaba7a84f6ecdf81/5be96251aaba7a0c09ece01c_steve-harvey-523112-unsplash.jpg',
+    imgUrl: '/mugs/black-tea-cup.jpeg',
     price: 15,
     onSale: true,
     oldPrice: 29,
@@ -38,43 +34,37 @@ export const mugs = [
   {
     id: 5,
     name: 'B&W Essentials Mug',
-    imgUrl:
-      'https://assets.website-files.com/5be96251aaba7a84f6ecdf81/5be96251aaba7a223decdff8_ronaldo-arthur-vidal-66241-unsplash.jpg',
+    imgUrl: '/mugs/b-w-essentials-mug.jpeg',
     price: 19,
   },
   {
     id: 6,
     name: 'Winter Style Mug',
-    imgUrl:
-      'https://assets.website-files.com/5be96251aaba7a84f6ecdf81/5be96251aaba7a6d09ece015_rocknwool-690694-unsplash.jpg',
+    imgUrl: '/mugs/winter-style-mug.jpeg',
     price: 25,
   },
   {
     id: 7,
     name: 'Ceramic Tea',
-    imgUrl:
-      'https://assets.website-files.com/5be96251aaba7a84f6ecdf81/5be96251aaba7ae493ece012_rawpixel-645289-unsplash.jpg',
+    imgUrl: '/mugs/ceramic-tea.jpeg',
     price: 46,
   },
   {
     id: 8,
     name: 'No Handle Bar Cup',
-    imgUrl:
-      'https://assets.website-files.com/5be96251aaba7a84f6ecdf81/5be96251aaba7a8461ece016_nathan-dumlao-643391-unsplash.jpg',
+    imgUrl: '/mugs/no-handle-bar-cup.jpeg',
     price: 34,
   },
   {
     id: 9,
     name: 'Espresso Cup by Mugs.co',
-    imgUrl:
-      'https://assets.website-files.com/5be96251aaba7a84f6ecdf81/5be96251aaba7a1db2ece009_natanja-grun-600152-unsplash.jpg',
+    imgUrl: '/mugs/espresso-cup-by-mugs.co.jpeg',
     price: 25,
   },
   {
     id: 10,
     name: 'Summer Designer Cup',
-    imgUrl:
-      'https://assets.website-files.com/5be96251aaba7a84f6ecdf81/5be96251aaba7a81a6ecdfe7_levi-guzman-1077850-unsplash.jpg',
+    imgUrl: '/mugs/summer-designer-cup.jpeg',
     price: 29,
   },
 ];

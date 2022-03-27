@@ -10,25 +10,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Picture {
-  url String @unique
-  twoForMagazine Boolean? @default(false)
-
-  Mug Mug[]
-}
-
 model Mug {
-  id       Int      @id @default(autoincrement())
+  id Int @id @default(autoincrement())
+
   name     String
   price    Int
   onSale   Boolean? @default(false)
   oldPrice Int?
   featured Boolean? @default(false)
+  imgUrl   String
+  slug     String
 
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
+}
 
-  imgUrl  String
+model Blog {
+  id Int @id @default(autoincrement())
 
-  picture Picture @relation(references: [url], fields: [imgUrl])
+  title     String
+  highlight String
+  imgUrl    String
+
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
 }

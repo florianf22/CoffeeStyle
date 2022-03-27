@@ -1,9 +1,9 @@
-import { Mug } from '@prisma/client';
+import { Blog } from '@prisma/client';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { prisma } from '../../../lib/prisma';
 
 type Data = {
-  data: Mug[] | null;
+  data: Blog[] | null;
   error: {
     message: string;
   } | null;
@@ -14,18 +14,16 @@ export default async function handler(
   res: NextApiResponse<Data>,
 ) {
   try {
-    const mugs = await prisma.mug.findMany({
-      where: { featured: true },
-    });
+    const blogs = await prisma.blog.findMany();
 
     res.status(200).json({
-      data: mugs,
+      data: blogs,
       error: null,
     });
   } catch (err) {
     res.status(500).json({
       error: {
-        message: "We couldn't get mugs info, please reload your page",
+        message: "We couldn't get blogs info, please reload your page",
       },
       data: null,
     });

@@ -14,18 +14,24 @@ export default async function handler(
   res: NextApiResponse<Data>,
 ) {
   try {
-    const mugs = await prisma.mug.findMany({
-      where: { featured: false },
+    const slug = req.query.slug as string;
+
+    const mug = await prisma.mug.findFirst({
+      where: {
+        slug,
+      },
     });
 
     res.status(200).json({
-      data: mugs,
+      data: mug,
       error: null,
     });
   } catch (err) {
+    console.log(err);
+
     res.status(500).json({
       error: {
-        message: "We couldn't get mugs info, please reload your page",
+        message: "We couldn't get mug info, please reload your page",
       },
       data: null,
     });

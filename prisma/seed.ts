@@ -1,15 +1,19 @@
 import { PrismaClient } from '@prisma/client';
-import { mugs } from '../data/mugs';
-import { pictures } from '../data/pictures';
+import slugify from 'slugify';
 const prisma = new PrismaClient();
+import { mugs } from '../data/mugs';
+import { blogs } from '../data/blogs';
 
 async function main() {
-  await prisma.picture.createMany({
-    data: pictures,
+  await prisma.mug.createMany({
+    data: mugs.map(mug => ({
+      ...mug,
+      slug: slugify(mug.name, { lower: true, replacement: '-' }),
+    })),
   });
 
-  await prisma.mug.createMany({
-    data: mugs,
+  await prisma.blog.createMany({
+    data: blogs,
   });
 }
 

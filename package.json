@@ -10,6 +10,7 @@
     "studio": "prisma studio",
     "seed": "prisma db seed",
     "migrate": "prisma migrate dev",
+    "prisma:format": "prisma format",
     "prisma:dev:deploy": "prisma migrate deploy",
     "db:dev:rm": "docker compose rm dev-db -s -f -v",
     "db:dev:up": "docker compose up dev-db -d",
@@ -25,6 +26,7 @@
     "next": "12.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "slugify": "^1.6.5",
     "use-immer": "^0.6.0"
   },
   "devDependencies": {

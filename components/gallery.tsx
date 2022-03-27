@@ -2,9 +2,9 @@ import type { NextPage } from 'next';
 import Image from 'next/image';
 
 const imgUrlsLocal = [
-  'https://assets.website-files.com/5be96251aaba7a7b19ecdf69/5be96251aaba7a2f3decdfa9_Image.jpg',
-  'https://assets.website-files.com/5be96251aaba7a7b19ecdf69/5be96251aaba7aa6d0ecdfa7_Image%202.jpg',
-  'https://assets.website-files.com/5be96251aaba7a7b19ecdf69/5be96251aaba7a528fecdfa6_Image.jpg',
+  '/two-mug-offer/1.jpeg',
+  '/two-mug-offer/2.jpeg',
+  '/two-mug-offer/3.jpeg',
 ];
 
 interface Props {

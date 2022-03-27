@@ -1,13 +1,8 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { MugsProvider } from '../context/mugs';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <MugsProvider>
-      <Component {...pageProps} />
-    </MugsProvider>
-  );
+  return <Component {...pageProps} />;
 }
 
 export default MyApp;
