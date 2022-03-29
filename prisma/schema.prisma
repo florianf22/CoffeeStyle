@@ -10,6 +10,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Dimensions {
+  id Int @id @default(autoincrement())
+
+  length Float
+  height Float
+  width  Float
+  weight Float
+
+  // relations
+  mug Mug?
+}
+
 model Mug {
   id Int @id @default(autoincrement())
 
@@ -20,9 +32,15 @@ model Mug {
   featured Boolean? @default(false)
   imgUrl   String
   slug     String
+  details  String
 
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
+
+  // relations
+  dimensionsId Int        @unique
+  
+  dimensions   Dimensions @relation(fields: [dimensionsId], references: [id])
 }
 
 model Blog {
