@@ -1,7 +1,13 @@
 import type { NextPage } from 'next';
 
-const Logo: NextPage = () => {
-  return <h1 className="font-bold text-lg">CoffeeStyle.</h1>;
+interface Props {
+  fontBigger?: boolean;
+}
+
+const Logo: NextPage<Props> = ({ fontBigger = false }) => {
+  const textSize = fontBigger ? 'text-2xl' : 'text-lg';
+
+  return <h1 className={`font-bold ${textSize}`}>CoffeeStyle.</h1>;
 };
 
 export default Logo;

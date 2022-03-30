@@ -6,7 +6,7 @@ const Input: NextPage<Props> = ({ className, children, ...props }) => {
   return (
     <input
       {...props}
-      className={`px-2 py-4 bg-transparent border-white border-[1px] border-opacity-50
+      className={`px-2 py-4 bg-transparent border-[1px] border-opacity-50
         outline-none text-center text-sm uppercase ${className}`}
     >
       {children}
