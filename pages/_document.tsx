@@ -18,6 +18,7 @@ class MyDocument extends Document {
         </Head>
         <body>
           <Main />
+          <div id="cart" />
           <NextScript />
         </body>
       </Html>

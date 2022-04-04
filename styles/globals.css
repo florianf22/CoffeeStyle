@@ -7,3 +7,7 @@
     font-family: 'Karla', sans-serif;
   }
 }
+
+#nprogress .bar {
+  background-color: rgb(239 68 68) !important;
+}

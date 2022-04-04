@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useRouter } from 'next/router';
-import { fetchMugs } from '../../lib/server-api-helpers';
+import { fetchMugs, fetchRandomMugs } from '../../lib/server-api-helpers';
 import { fetchMugBySlug } from '../../lib/server-api-helpers/fetch-mug-by-slug';
 import { Dimensions, Mug } from '@prisma/client';
 import Head from 'next/head';
@@ -13,15 +13,33 @@ import Input from '../../components/input';
 import Button from '../../components/button';
 import { fetchDimensionsById } from '../../lib/server-api-helpers/fetch-dimensions-by-id';
 import Banner from '../../components/banner.secion';
+import Products from '../../components/products.section';
+import { CartContext } from '../../context/cart';
+import Cart from '../../components/cart';
+import PageWrapper from '../../components/page-wrapper';
 
 interface Props {
   mug: Mug;
   dimensions: Dimensions;
+  mugs: Mug[];
   error: string;
 }
 
-const ProductPage: NextPage<Props> = ({ mug, dimensions, error }) => {
-  const router = useRouter();
+const ProductPage: NextPage<Props> = ({ mug, dimensions, error, mugs }) => {
+  const [quantity, setQuantity] = React.useState(1);
+  const {
+    actions: { addItemToCart: addItemToCartAction },
+    dispatch,
+  } = React.useContext(CartContext);
+
+  const addItemToCart = () => {
+    addItemToCartAction(mug, quantity);
+    dispatch({ type: 'TOGGLE_VISIBILITY' });
+  };
+
+  const onChangeQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuantity(parseInt(e.target.value, 10));
+  };
 
   const renderDimensions = () => {
     return (
@@ -51,11 +69,7 @@ const ProductPage: NextPage<Props> = ({ mug, dimensions, error }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header>
-        <Nav />
-      </header>
-
-      <main className="text-center">
+      <PageWrapper topSection="nav" className="text-center">
         <ShowIfNotError error={error}>
           <ProductDetailed mug={mug} />
         </ShowIfNotError>
@@ -67,8 +81,17 @@ const ProductPage: NextPage<Props> = ({ mug, dimensions, error }) => {
           >
             QUANTITY
           </h3>
-          <Input type="number" className="border-black w-[100%] text-black" />
-          <Button secondary className="mt-3 w-[100%] text-base">
+          <Input
+            type="number"
+            className="border-black w-[100%] text-black"
+            value={quantity}
+            onChange={onChangeQuantity}
+          />
+          <Button
+            secondary
+            className="mt-3 w-[100%] text-base"
+            onClick={addItemToCart}
+          >
             ADD TO CART
           </Button>
         </div>
@@ -96,9 +119,9 @@ const ProductPage: NextPage<Props> = ({ mug, dimensions, error }) => {
         </div>
 
         <Banner />
-      </main>
 
-      <Footer />
+        <Products mugs={mugs} title="YOU MIGHT ALSO LIKE THIS" />
+      </PageWrapper>
     </div>
   );
 };
@@ -116,12 +139,17 @@ export const getStaticProps: GetStaticProps = async context => {
   }
 
   const { data: mug, error } = await fetchMugBySlug(slug as string);
-  const { data: dimensions } = await fetchDimensionsById(mug.dimensionsId);
+
+  const [{ data: dimensions }, { data: mugs }] = await Promise.all([
+    fetchDimensionsById(mug.dimensionsId),
+    fetchRandomMugs(mug.id),
+  ]);
 
   return {
     props: {
       mug,
       dimensions,
+      mugs,
       error: error?.message ?? '',
     },
     revalidate: 20,

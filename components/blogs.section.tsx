@@ -16,7 +16,7 @@ const Blogs: NextPage<Props> = ({ blogs }) => {
 
       <div className="mt-16">
         {blogs.map(blog => (
-          <Blog key={blog.id} blog={blog} />
+          <Blog key={blog.id} {...blog} />
         ))}
       </div>
     </section>

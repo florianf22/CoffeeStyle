@@ -4,19 +4,27 @@ import * as React from 'react';
 import Product from './product';
 import SectionLabel from './section-label';
 
-interface Props {
+interface Props extends React.HTMLProps<HTMLDivElement> {
   mugs: Mug[];
-  moreMugs?: boolean;
+  title?: string;
+  biggerImgSize?: boolean;
 }
 
-const Products: NextPage<Props> = ({ mugs, moreMugs = false }) => {
-  return (
-    <section className="text-center mb-24">
-      <SectionLabel className="mb-8">
-        {moreMugs ? 'MORE PRODUCTS' : 'FEATURED PRODUCTS'}
-      </SectionLabel>
+const Products: NextPage<Props> = ({
+  mugs,
+  title,
+  className,
+  biggerImgSize = false,
+  ...props
+}) => {
+  const imgWidth = biggerImgSize ? 'w-[90vw]' : 'w-[55vw]';
 
-      {mugs && mugs.map(mug => <Product key={mug.id} mug={mug} />)}
+  return (
+    <section {...props} className={`text-center mb-24 ${className}`}>
+      {title && <SectionLabel className="mb-8">{title}</SectionLabel>}
+
+      {mugs &&
+        mugs.map(mug => <Product key={mug.id} mug={mug} imgWidth={imgWidth} />)}
     </section>
   );
 };

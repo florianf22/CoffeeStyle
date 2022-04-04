@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Link from 'next/link';
 
 interface Props {
   fontBigger?: boolean;
@@ -7,7 +8,11 @@ interface Props {
 const Logo: NextPage<Props> = ({ fontBigger = false }) => {
   const textSize = fontBigger ? 'text-2xl' : 'text-lg';
 
-  return <h1 className={`font-bold ${textSize}`}>CoffeeStyle.</h1>;
+  return (
+    <Link href="/" passHref>
+      <h1 className={`font-bold ${textSize} cursor-pointer`}>CoffeeStyle.</h1>
+    </Link>
+  );
 };
 
 export default Logo;

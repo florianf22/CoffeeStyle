@@ -22,7 +22,7 @@ const Button: NextPage<
   return (
     <button
       {...props}
-      className={`py-4 px-6 transition-opacity hover:opacity-90 ${variant} ${className}`}
+      className={`py-4 px-6 transition-all hover:opacity-90 ${variant} ${className}`}
     >
       {children}
     </button>

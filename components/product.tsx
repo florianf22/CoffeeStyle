@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Mug } from '@prisma/client';
 import type { NextPage } from 'next';
 import Image from 'next/image';
-import { formatPrice } from '../lib/formaters/formatPrice';
 import useIntersection from '../hooks/useIntersection';
 import Link from 'next/link';
 import ProductPrice from './product-price';
@@ -32,7 +31,6 @@ const Product: NextPage<Props> = ({
   return (
     <div
       {...props}
-      key={mug.id}
       className={`
         my-8 grid place-items-center opacity-0 translate-y-24 transition-all
          ${

@@ -1,11 +1,10 @@
+import * as React from 'react';
 import { Blog, Mug } from '@prisma/client';
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
-import * as React from 'react';
 import AboutOverview from '../components/about-overview.section';
 import Blogs from '../components/blogs.section';
-import Footer from '../components/footer.section';
-import Header from '../components/header.section';
+import PageWrapper from '../components/page-wrapper';
 import Parallax from '../components/parallax';
 import PremiumOffer from '../components/premium-offer.section';
 import Products from '../components/products.section';
@@ -31,17 +30,15 @@ const HomePage: NextPage<Props> = ({ mugs, blogs, errorMugs, errorBlogs }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
-
-      <main>
+      <PageWrapper>
         <AboutOverview />
 
         <ShowIfNotError error={errorMugs}>
-          <Products mugs={featuredMugs} />
+          <Products mugs={featuredMugs} title="FEATURED PRODUCTS" />
         </ShowIfNotError>
 
         <ShowIfNotError error={errorMugs}>
-          <Products moreMugs mugs={notFeaturedMugs} />
+          <Products mugs={notFeaturedMugs} title="MORE PRODUCTS" />
         </ShowIfNotError>
 
         <TwoMugOffer />
@@ -53,9 +50,7 @@ const HomePage: NextPage<Props> = ({ mugs, blogs, errorMugs, errorBlogs }) => {
         <ShowIfNotError error={errorBlogs}>
           <Blogs blogs={blogs} />
         </ShowIfNotError>
-      </main>
-
-      <Footer />
+      </PageWrapper>
     </div>
   );
 };

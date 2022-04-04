@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import Button from './button';
 // import heroImage from '../public/images/headerBg.jpeg';
 
@@ -16,9 +17,11 @@ const HeaderHero: NextPage = () => {
         The most versatile furniture system ever created. Designed to fit your
         life, made to move and grow.
       </h3>
-      <Button primary className="self-center">
-        EXPLORE OUR PRODUCTS
-      </Button>
+      <Link href="/products" passHref>
+        <Button primary className="self-center">
+          EXPLORE OUR PRODUCTS
+        </Button>
+      </Link>
     </div>
   );
 };
