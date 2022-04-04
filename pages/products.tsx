@@ -26,6 +26,24 @@ const ProductsPage: NextPage<Props> = ({
   errorMugs,
   errorBlogs,
 }) => {
+  const [filteredMugs, setFilteredMugs] = React.useState<Mug[]>([]);
+  const [selectedCategory, setSelectedCategory] = React.useState<string>('all');
+
+  React.useEffect(() => {
+    if (mugs.length > 0) {
+      setFilteredMugs(mugs);
+    }
+  }, [mugs]);
+
+  const handleCategoryChange = (category: string): void => {
+    if (category === 'all') {
+      setFilteredMugs(mugs);
+    } else {
+      setFilteredMugs(mugs.filter(mug => mug.category === selectedCategory));
+    }
+    setSelectedCategory(category);
+  };
+
   return (
     <div>
       <Head>
@@ -34,24 +52,27 @@ const ProductsPage: NextPage<Props> = ({
       </Head>
 
       <PageWrapper topSection="nav">
-        <div className="text-center">
-          <h1>OUR PRODUCTS</h1>
+        <div className="pt-10 pb-10">
+          <h1 className="text-3xl font-semibold">OUR PRODUCTS</h1>
 
-          <h4>
+          <h4 className="mt-8 text-lg text-gray-600">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas,
             tenetur!
           </h4>
         </div>
 
-        <MugsCategoryList />
+        <MugsCategoryList
+          selectedCategory={selectedCategory}
+          handleCategoryChange={handleCategoryChange}
+        />
 
         <Slider
           RendererComponent={Blog}
           items={blogs}
-          minHeight="min-h-[36rem]"
+          minHeight="min-h-[38rem]"
         />
 
-        <Products mugs={mugs} className="mt-24" biggerImgSize />
+        <Products mugs={filteredMugs} className="mt-24" biggerImgSize />
       </PageWrapper>
     </div>
   );
