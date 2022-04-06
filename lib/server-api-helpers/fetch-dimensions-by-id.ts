@@ -7,7 +7,7 @@ type ReturnType = {
   };
 };
 
-export const fetchDimensionsById= async (id: number): Promise<ReturnType> => {
+export const fetchDimensionsById = async (id: number): Promise<ReturnType> => {
   const res = await fetch(`http://localhost:3000/api/dimensions/${id}`);
   const json = await res.json();
 

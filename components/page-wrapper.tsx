@@ -6,10 +6,12 @@ import Nav from './nav';
 
 interface Props extends React.HTMLProps<HTMLDivElement> {
   topSection?: 'header' | 'nav';
+  padding?: boolean;
 }
 
 const PageWrapper: NextPage<Props> = ({
   topSection = 'header',
+  padding = true,
   children,
   className,
   ...props
@@ -23,7 +25,10 @@ const PageWrapper: NextPage<Props> = ({
           <Nav />
         </header>
       )}
-      <main {...props} className={`text-center px-[5%] $${className}`}>
+      <main
+        {...props}
+        className={`text-center ${padding && 'px-[5%]'} ${className}`}
+      >
         {children}
       </main>
 

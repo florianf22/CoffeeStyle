@@ -34,23 +34,27 @@ interface Props {
 
 const Menu: NextPage<Props> = ({ open }) => {
   const router = useRouter();
-  const height = open ? 'h-[300px]' : 'h-0';
+  const position = open ? 'top-full' : '-top-[396px]';
 
   return (
     <ul
-      className={`absolute top-full left-0 text-white w-full z-20 border-0
-        ${height} overflow-hidden bg-slate-600`}
+      className={`absolute ${position} left-0 text-white w-full border-0
+       h-[396px] transition-all duration-500`}
     >
       {listItems.map((item, index) => {
-        const font = router.pathname === item.href ? 'font-bold' : '';
+        const opacity =
+          router.pathname === item.href ? 'opacity-100' : 'opacity-70';
 
         return (
           <li
             key={item.label}
-            className={`bg-white text-black w-full py-4 text-center uppercase text-[12px]
-                tracking-[1px] ${font} transition-all`}
+            className={`bg-white text-black w-full py-6 text-center uppercase
+                text-[12px] tracking-[1px] font-bold`}
           >
-            <a href={item.href} className="">
+            <a
+              href={item.href}
+              className={`${opacity} hover:opacity-100 transition-opacity`}
+            >
               {item.label}
             </a>
           </li>

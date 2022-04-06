@@ -4,6 +4,7 @@ const prisma = new PrismaClient();
 import { mugs } from '../data/mugs';
 import { blogs } from '../data/blogs';
 import { dimensions } from '../data/dimensions';
+import { authors } from '../data/authors';
 
 async function main() {
   await prisma.dimensions.createMany({
@@ -15,6 +16,10 @@ async function main() {
       ...mug,
       slug: slugify(mug.name, { lower: true, replacement: '-' }),
     })),
+  });
+
+  await prisma.author.createMany({
+    data: authors,
   });
 
   await prisma.blog.createMany({

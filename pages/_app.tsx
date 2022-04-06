@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import NProgress from 'nprogress';
 import * as React from 'react';
 import '../styles/globals.css';
+import '../styles/blog-details.css';
 import 'nprogress/nprogress.css';
 import { CartProvider } from '../context/cart';
 

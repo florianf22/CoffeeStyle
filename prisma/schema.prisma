@@ -39,9 +39,20 @@ model Mug {
   updateAt  DateTime @updatedAt
 
   // relations
-  dimensionsId Int        @unique
-  
-  dimensions   Dimensions @relation(fields: [dimensionsId], references: [id])
+  dimensionsId Int @unique
+
+  dimensions Dimensions @relation(fields: [dimensionsId], references: [id])
+}
+
+model Author {
+  id Int @id @default(autoincrement())
+
+  name    String
+  bio     String
+  imgUrl  String
+
+  // relations
+  blogs Blog[]
 }
 
 model Blog {
@@ -50,7 +61,13 @@ model Blog {
   title     String
   highlight String
   imgUrl    String
+  html      String?
 
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
+
+  // relations
+  authorId Int? @unique
+
+  author Author? @relation(fields: [authorId], references: [id])
 }

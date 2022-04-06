@@ -15,14 +15,20 @@ const Nav: NextPage = () => {
   };
 
   return (
-    <nav className="py-6 flex items-center px-[10%] justify-between relative">
-      <Logo />
-      <CartLogo cartItemsCount={itemsQuantity} />
-      <FiAlignRight
-        className="h-[24px] w-[24px] text-gray-600 cursor-pointer"
-        onClick={handleOnIconClick}
-      />
-      <Menu open={menuOpen} />
+    <nav className="relative">
+      <div
+        className="pt-6 flex items-center px-[10%] justify-between
+          pb-6 border-b-[1px] z-10 relative"
+      >
+        <Logo />
+        <CartLogo cartItemsCount={itemsQuantity} />
+        <FiAlignRight
+          className="h-[24px] w-[24px] text-gray-600 cursor-pointer"
+          onClick={handleOnIconClick}
+        />
+
+        <Menu open={menuOpen} />
+      </div>
     </nav>
   );
 };
